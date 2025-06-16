@@ -21,7 +21,7 @@ export default function Products() {
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const res = await fetch("http://localhost:1337/api/products?populate=*");
+        const res = await fetch("https://better-melody-a764e21132.strapiapp.com/api/products?populate=*");
         if (!res.ok) throw new Error("Failed to fetch");
         const data = await res.json();
 
@@ -61,7 +61,7 @@ export default function Products() {
                     image?.[0]?.formats?.thumbnail?.url ||
                     image?.[0]?.url ||
                     "/placeholder.png";
-                  const fullImageUrl = `http://localhost:1337${imageUrl}`;
+                  const fullImageUrl = `https://better-melody-a764e21132.strapiapp.com${imageUrl}`;
 
                   return (
                     <Card key={id} className="w-full h-auto overflow-hidden flex flex-col">

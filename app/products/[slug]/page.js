@@ -14,7 +14,7 @@ export default function ProductDetail() {
     async function fetchProduct() {
       try {
         const res = await fetch(
-          `http://localhost:1337/api/products?filters[slug][$eq]=${slug}&populate=*`
+          `https://better-melody-a764e21132.strapiapp.com/api/products?filters[slug][$eq]=${slug}&populate=*`
         );
         if (!res.ok) throw new Error("Failed to fetch product");
         const data = await res.json();
@@ -32,7 +32,7 @@ export default function ProductDetail() {
 
   const { title, desription, price, image } = product;
   const imageUrl = image?.[0]?.url || "/placeholder.png";
-  const fullImageUrl = `http://localhost:1337${imageUrl}`;
+  const fullImageUrl = `https://better-melody-a764e21132.strapiapp.com${imageUrl}`;
 
   // 🧮 Calculate total based on selected size
   const getTotal = () => {

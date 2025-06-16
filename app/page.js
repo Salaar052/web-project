@@ -37,7 +37,7 @@ export default function Home() {
   // Fetch Hero Images
   useEffect(() => {
     async function fetchImages() {
-      const res = await fetch("http://localhost:1337/api/Homes?populate=*");
+      const res = await fetch("https://better-melody-a764e21132.strapiapp.com/api/Homes?populate=*");
       const data = await res.json();
       const firstSlide = data.data[0];
       setImages(firstSlide.slideBar);
@@ -49,7 +49,7 @@ export default function Home() {
   // Fetch Product Data
   useEffect(() => {
     async function fetchProducts() {
-      const res = await fetch("http://localhost:1337/api/products?populate=*");
+      const res = await fetch("https://better-melody-a764e21132.strapiapp.com/api/products?populate=*");
       const data = await res.json();
       setProducts(data.data);
     }
@@ -98,7 +98,7 @@ export default function Home() {
             <div key={product.id} className="px-2">
               <div className="bg-white rounded-lg shadow p-3 text-center">
                 <img
-                  src={`http://localhost:1337${product.image[0]?.formats?.thumbnail?.url}`}
+                  src={`https://better-melody-a764e21132.strapiapp.com${product.image[0]?.formats?.thumbnail?.url}`}
                   alt={product.title}
                   className="mx-auto h-40 object-cover rounded-md"
                 />
