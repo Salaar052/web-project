@@ -43,54 +43,52 @@ export default async function Products() {
   }, {});
 
   return (
-    <>
-      <div className="mx-50 mt-10">
-        {Object.entries(grouped).map(([category, products]) => (
-          <div key={category} className="mb-12">
-            <h3 className="text-xl font-bold mb-4">{category}</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-              {products.map((product) => {
-                const { id, title, desription, price, image, slug } = product;
-                const imageUrl = image?.[0]?.url || "/placeholder.png";
-                return (
-                  <Card key={id} className="w-full h-auto overflow-hidden flex flex-col">
-                    <CardHeader className="pb-2">
-                      <CardTitle>
-                        <Link href={`/products/${slug}`}>
-                          <h1 className="text-lg cursor-pointer hover:underline">
-                            {title || "Untitled"}
-                          </h1>
-                        </Link>
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="overflow-hidden flex flex-col gap-2">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      {Object.entries(grouped).map(([category, products]) => (
+        <div key={category} className="mb-12">
+          <h3 className="text-xl sm:text-2xl font-bold mb-4">{category}</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            {products.map((product) => {
+              const { id, title, desription, price, image, slug } = product;
+              const imageUrl = image?.[0]?.url || "/placeholder.png";
+              return (
+                <Card key={id} className="w-full h-auto overflow-hidden flex flex-col">
+                  <CardHeader className="pb-2">
+                    <CardTitle>
                       <Link href={`/products/${slug}`}>
-                        <div className="relative w-full h-[180px]">
-                          <Image
-                            src={imageUrl}
-                            alt={title}
-                            fill
-                            className="object-cover rounded-md cursor-pointer"
-                          />
-                        </div>
+                        <h1 className="text-base sm:text-lg cursor-pointer hover:underline">
+                          {title || "Untitled"}
+                        </h1>
                       </Link>
-                      <p className="text-sm text-gray-800">
-                        {desription || "No description available."}
-                      </p>
-                      <p className="text-lg font-bold text-green-600">
-                        Rs {price || "N/A"}
-                      </p>
-                      <Button className="mt-2 bg-blue-600 hover:bg-blue-700 text-white transition-colors">
-                        Add to Cart
-                      </Button>
-                    </CardContent>
-                  </Card>
-                );
-              })}
-            </div>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="overflow-hidden flex flex-col gap-2">
+                    <Link href={`/products/${slug}`}>
+                      <div className="relative w-full h-[150px] sm:h-[180px]">
+                        <Image
+                          src={imageUrl}
+                          alt={title}
+                          fill
+                          className="object-cover rounded-md cursor-pointer"
+                        />
+                      </div>
+                    </Link>
+                    <p className="text-xs sm:text-sm text-gray-800 line-clamp-2">
+                      {desription || "No description available."}
+                    </p>
+                    <p className="text-base sm:text-lg font-bold text-green-600">
+                      Rs {price || "N/A"}
+                    </p>
+                    <Button className="mt-2 bg-blue-600 hover:bg-blue-700 text-white transition-colors text-sm sm:text-base py-2">
+                      Add to Cart
+                    </Button>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
-        ))}
-      </div>
-    </>
+        </div>
+      ))}
+    </div>
   );
 }
