@@ -67,7 +67,7 @@ export default function Home() {
           {images.map((img, index) => (
             <div key={index}>
               <img
-                src={`http://localhost:1337${img.formats.large.url}`}
+                src={`https://better-melody-a764e21132.strapiapp.com${img.formats.large.url}`}
                 alt={`Slide ${index + 1}`}
                 className="h-[450px] object-cover"
               />
